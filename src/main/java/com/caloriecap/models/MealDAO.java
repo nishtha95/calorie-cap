@@ -20,7 +20,6 @@ public class MealDAO extends AuditableDAO{
 
 	private static final long serialVersionUID = -1002632094495829067L;
 
-	@NotBlank
 	@Getter
 	@Setter
 	private Date date;
@@ -30,14 +29,12 @@ public class MealDAO extends AuditableDAO{
 	@Setter
 	private String description;
 	
-	@NotBlank
 	@Getter
 	@Setter
-	private int calorieCount;
+	private Integer calorieCount;
 	
-	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id",nullable = false)
 	@Getter
 	@Setter
 	private UserDAO user;

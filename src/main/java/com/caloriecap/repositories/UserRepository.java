@@ -9,5 +9,6 @@ import com.caloriecap.models.UserDAO;
 public interface UserRepository extends JpaRepository<UserDAO, Long> {
 
 	UserDAO findByUsername(String username);
+	UserDAO findByEmail(String email);
 	
 }

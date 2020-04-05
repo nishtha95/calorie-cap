@@ -7,6 +7,14 @@ public class UserDTO {
 
 	@Getter
 	@Setter
+	private String firstName;
+	
+	@Getter
+	@Setter
+	private String lastName;
+	
+	@Getter
+	@Setter
 	private String email;
 
 	@Getter
@@ -19,6 +27,14 @@ public class UserDTO {
 	
 	@Getter
 	@Setter
+	private String token;
+	
+	@Getter
+	@Setter
 	private Integer expectedCalorieCount;
+	
+	@Getter
+	@Setter
+	private String role;
 	
 }

@@ -1,6 +1,6 @@
 package com.caloriecap.models;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,8 +8,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.Getter;
@@ -28,5 +28,7 @@ public class UserDAO extends AccountDAO{
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="user")
 	@Getter
 	@Setter
-	private Set<MealDAO> meals;
+	@JsonIgnore
+	private List<MealDAO> meals;
+
 }

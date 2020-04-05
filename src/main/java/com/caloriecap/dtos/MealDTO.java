@@ -9,6 +9,10 @@ public class MealDTO {
 
 	@Getter
 	@Setter
+	private Long id;
+	
+	@Getter
+	@Setter
 	private Date date;
 	
 	@Getter
@@ -18,5 +22,9 @@ public class MealDTO {
 	@Getter
 	@Setter
 	private int calorieCount;
+
+	@Getter
+	@Setter
+	private String username;
 	
 }

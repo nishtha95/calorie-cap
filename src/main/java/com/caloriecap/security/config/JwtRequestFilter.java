@@ -15,6 +15,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.caloriecap.services.JwtUserDetailsService;
+
 import io.jsonwebtoken.ExpiredJwtException;
 
 @Component
@@ -49,13 +51,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			logger.warn("JWT Token does not begin with Bearer String");
 		}
 
-		// Once we get the token validate it.
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
 			UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
 
-			// if token is valid configure Spring Security to manually set
-			// authentication
 			if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
 
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(

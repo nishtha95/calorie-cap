@@ -1,13 +1,11 @@
 package com.caloriecap.models;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
@@ -18,6 +16,16 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AccountDAO extends AuditableDAO{
 
+	@NotBlank
+	@Getter
+	@Setter
+	protected String firstName;
+	
+	@NotBlank
+	@Getter
+	@Setter
+	protected String lastName;
+	
 	@Email @NotBlank
 	@Column(unique = true)
 	@Getter
@@ -34,9 +42,10 @@ public abstract class AccountDAO extends AuditableDAO{
 	@Setter
 	protected String saltedHashedPassword;
 	
+	@ManyToOne
+	@JoinColumn(name = "role_id",nullable = false)
 	@Getter
 	@Setter
-	@ManyToMany
-	Set<RoleDAO> roles=new HashSet<>();
-	
+	private RoleDAO role;
+
 }
